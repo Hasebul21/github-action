@@ -1,5 +1,4 @@
 name: demo1-workflow
-
 on:
   push:
     branches: [main]
@@ -33,4 +32,3 @@ jobs:
       - name: Build
         run: npm run build
 
-        
