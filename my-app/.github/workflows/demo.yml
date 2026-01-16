@@ -1,25 +1,32 @@
 name: demo1-workflow
+
 on:
-    pull_request:
-        types: [opened, reopened]
-    push:
-        branches: [ main ]
-    workflow_dispatch:
+  push:
+  pull_request:
+  workflow_dispatch:
+
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Get code
-              uses: actions/checkout@v3
-            - name: install dependecis
-              run: npm ci
-            - name: run lint
-              run: npm run lint
-    build:
-        needs: test
-        runs-on: ubuntu-latest
-        steps:
-            - name: install dependecis
-              run: npm ci
-            - name: build
-              run: npm run build
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
