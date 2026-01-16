@@ -1,11 +1,11 @@
 name: demo1-workflow
 
 on:
-    push:
-        branches: [ main ]
-    pull_request:
-        types: [opened, reopened]
-    workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, reopened]
+  workflow_dispatch:
 
 jobs:
   test:
