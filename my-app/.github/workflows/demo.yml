@@ -1,0 +1,22 @@
+name: demo1-workflow
+on:
+    pull_request:
+        types: [opened, reopened]
+    push:
+    workflow_dispatch:
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'install dependecis'
+              run: npm ci
+            - name: 'run lint'
+              run: npm run lint
+    build:
+        needs: test
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'install dependecis'
+              run: npm ci
+            - name: 'build'
+              run: npm run build
