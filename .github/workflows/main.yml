@@ -8,11 +8,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Use latest LTS or match your project
+          cache: 'npm'  # Caches dependencies for speed [web:13]
+
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Preferred over npm install for CI (exact lockfile match) [web:13]
 
       - name: Build
         run: npm run build
-
-
-        
